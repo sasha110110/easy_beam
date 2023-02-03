@@ -9,6 +9,6 @@ app.config['SECRET_KEY'] = 'kek'
 
 @app.route('/', methods=['GET', 'POST'])
 def display():
-    return "Check success"
+    return render_template("index.html")
     
   

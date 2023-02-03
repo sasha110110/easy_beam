@@ -15,28 +15,7 @@
 
   
 	
-    <form action='' class="form1" id="setBot" method="POST">
-          {{ form.hidden_tag() }}
-     <div class="form-group">
-            {{ form.host.label(class="sign") }} {{ form.host(class="un ") }}  </div>
-	  
-	  <div class="form-group">
-	        {{ form.bot_token.label(class="sign") }} {{ form.bot_token(class="un ") }} 
-             </div>
-	  
-    <br></br>
-	  <a class="submit" value="set" data-inline="true">Установить</a>
-	  <a class="submit" value="show" data-inline="true">Показать</a>
-	  <a class="submit" value="delete" data-inline="true">Удалить</a>
-	  
-	 <br></br> 
-	 <input type="reset"  value="Очистить" class="reset" align="center"/>
-	  
-	  </div>
-   
-  <br></br>
-  
-  
+    
   
  <details class="details">
     <summary>Инфо</summary>
@@ -50,12 +29,6 @@
 
 	
 	
-     <script> 
-	 
-
-	 
-	 function clearForm()
-	 {f=document.getElementById("setBot");
-	 f.submit(); f.reset();} </script>
+    
   </body>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    
+    
+  <title>Настроить TELEGRAM бота </title>
+    </head>
+	
+	
+	<body>
+	 <div class="main">
+    <p class="sign" align="center">Настройка TELEGRAM бота</p>
+
+  
+	
+    <form action='' class="form1" id="setBot" method="POST">
+          {{ form.hidden_tag() }}
+     <div class="form-group">
+            {{ form.host.label(class="sign") }} {{ form.host(class="un ") }}  </div>
+	  
+	  <div class="form-group">
+	        {{ form.bot_token.label(class="sign") }} {{ form.bot_token(class="un ") }} 
+             </div>
+	  
+    <br></br>
+	  <a class="submit" value="set" data-inline="true">Установить</a>
+	  <a class="submit" value="show" data-inline="true">Показать</a>
+	  <a class="submit" value="delete" data-inline="true">Удалить</a>
+	  
+	 <br></br> 
+	 <input type="reset"  value="Очистить" class="reset" align="center"/>
+	  
+	  </div>
+   
+  <br></br>
+  
+  
+  
+ <details class="details">
+    <summary>Инфо</summary>
+  <p>  После установки вэбхука </p>
+        <p>можно обрабатывать POST-запросы по адресу HOST(https://.здесь хост)/TOKEN</p>
+		<p>  Ответ: </p>
+		<p> content = json.loads(request.get_data()) </p>
+</details>
+ 
+
+
+	
+	
+     <script> 
+	 
+
+	 
+	 function clearForm()
+	 {f=document.getElementById("setBot");
+	 f.submit(); f.reset();} </script>
+  </body>
+</html>

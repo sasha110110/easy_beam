@@ -1,6 +1,5 @@
 import os
 import imaplib
-from config import passw
 import email
 from email.header import Header, decode_header
 from email.parser import HeaderParser
@@ -9,7 +8,7 @@ import re
 
 def check_email():
     mail = imaplib.IMAP4_SSL('imap.mail.ru')
-    #passw=os.environ.get("passw")
+    passw=os.environ.get("passw")
     #print(passw)
     #passw=""
     mail.login('marsasha@mail.ru', passw) #TODO GMAIL PASSWORD

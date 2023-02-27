@@ -1,0 +1,218 @@
+h2,
+h3{color: black
+}
+a {
+	color: white !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+
+.logo {
+	margin: 0;
+	font-size: 1.45em;
+}
+
+.main-nav {
+	margin-top: 5px;
+
+}
+.logo a,
+.main-nav a {
+	padding: 10px 15px;
+	text-transform: uppercase;
+	text-align: center;
+	display: block;
+}
+
+.main-nav a {
+	color: #34495e;
+	font-size: .99em;
+}
+
+.main-nav a:hover {
+	color: #718daa;
+}
+
+
+
+.header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+	border: 1px solid #a2a2a2;
+	background-color: #f4f4f4;
+	-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+
+
+
+@media (min-width: 769px) {
+	.header,
+	.main-nav {
+		display: flex;
+	}
+	.header {
+		flex-direction: column;
+		align-items: center;
+    	.header{
+		width: 80%;
+		margin: 0 auto;
+		max-width: 1150px;
+	}
+	}
+
+}
+
+@media (min-width: 1025px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+}
+
+*{box-sizing: border-box}
+body {font-family: "Lato", sans-serif;
+  min-height: 100vh;
+  /* background: linear-gradient(to right, lightgray, white); */
+  background: white;
+}
+#tabs {
+  position: absolute;   
+  min-height: 360px; /* This part sucks */
+  clear: both;
+  margin: 25px 0;
+}
+.tabs li  {
+  float: left;  
+  clear: both;
+  width: 400px;
+}
+.tabs li {
+    background: #211b1b;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-left: -1px;
+    font-size: 18px;
+	
+    vertical-align: middle;
+    position: relative;
+    left: 1px;
+    width: 250px;
+    height: 42px;
+    display: table-cell;
+	margin-top: 8px;
+	color: white;
+}
+  
+  
+p {
+    padding: 0;
+    margin: 0;
+    
+}
+/* Change background color of buttons on hover */
+
+.tabs li:hover {
+  background-color: #cyan;
+}
+
+/* Create an active/current "tab button" class */
+.tabs li.active {
+  background-color: white;
+}
+.tabcontent {
+  position: relative;
+  top: 200; 
+  left: 260px;
+  background: lightgray;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 15px solid #eee;
+  width: 250 px;
+  height: 300 px;
+ }
+.tabcontent span {
+  animation: 0.5s ease-out 0s 1 slideInFromTop; 
+}
+.tabcontent:not(:target) {
+  display: none;
+}
+
+.tabcontent:target {
+  display: table;
+  
+  
+}
+
+
+.tab.tabClosed, .tab.tabClosed a:first-child {
+	margin-right: 0;
+	border-width: 0;
+}
+
+.tab.tabClosed {
+	width: 0 !important;/* use important because we need to set the width of tabs in javascript in order to be able to animate them to 0 */
+}
+
+.tab.tabClosed a {
+	opacity: 0;
+}
+
+.tab:hover {
+	background: #fff;
+}
+
+.tabSelected {
+	height: 45px;
+	border-bottom: none;
+	background: #fff;
+}
+
+.closeTab {
+	width: 16px;
+	height: 16px;
+	margin: 0 14px 0 12px;
+	padding: 3px;
+	border-radius: 16px;
+	line-height: 16px;
+	text-align: center;
+}
+
+.closeTab:hover {
+	background: #DAE0E7;
+}
+
+
+input[type=text]:focus {
+  border: 4px solid #555;
+border: 4px solid gray}
+input[type=text] {
+  background-color:Azure ;
+  color: black;
+  margin-top: 1.5px;
+}
+
+input[type="submit"] {
+	-moz-border-radius: 25px;
+      
+    }
+
+ input[type="submit"]:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}

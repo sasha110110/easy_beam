@@ -208,18 +208,6 @@ def thank():
           #return f.read()
 
       
-        
-
-
-@app.route("/forbidden",methods=['GET', 'POST'])
-@login_required
-def protected():
-    return redirect(url_for('forbidden.html'))
-
-
-
-
-
 
 #if __name__ == '__main__':
    # app.run('0.0.0.0', 5000,  debug = True) #ssl_context='adhoc')

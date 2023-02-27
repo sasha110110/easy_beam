@@ -197,9 +197,13 @@ function disableNSupportsInput() {
 document.getElementById('NSupports').disabled = true;
 			};
 			
+function disableNSupportsInputSubmit() {
+document.getElementById('#SupportInputSubmit').disabled = true;
+			};
+			
 $('#SupportInputSubmit').on('click', show_suppmominp);
 $('#SupportInputSubmit').on('click', disableNSupportsInput);
-
+$('#SupportInputSubmit').on('click', disableNSupportsInputSubmit);
 
 function addTabForLocalMoments() {
 var tabs=document.getElementById("tabs");

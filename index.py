@@ -29,7 +29,7 @@ print(passw)
 
 
 app = Flask(__name__, static_folder="./static")
-app.config['SECRET_KEY'] = 'kek'
+app.config['SECRET_KEY'] = os.environ.get("flask_secret")
 
 #UPLOAD_FOLDER=r'C:\Users\Sasha\Desktop\M\receipts'
 #dropzone = Dropzone(app)
@@ -215,6 +215,7 @@ def thank():
 @login_required
 def protected():
     return redirect(url_for('forbidden.html'))
+
 
 
 

@@ -1,0 +1,396 @@
+{% extends "base1.html" %}
+{% block title %} Home {% endblock %}
+ 
+{% block body %}
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<style><link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/tabstyle.css') }}">
+</style>
+
+
+
+
+  
+  <table>
+  <tr height=5%>
+  <div><canvas id="BeamCanvas"  width="1200" height="200" background="кув"  CANVAS IS NOT SUPPORTED></canvas> </div>
+  </tr>
+  </table>
+ 
+
+  <div class="tabs" id="tabs">
+            
+                  <li class="tablink"><a href="#LeftPointInput">Левый конец</a></li>
+                  <li class="tablink"><a href="#RightPointInput">Правый конец</a></li>
+                  <li class="tablink"><a href="#SupportsInput">Число опор</a></li>
+				  <li class="tablink" id="SMI"><a href="#SupportMomentInput">Моменты на опоры</a></li>
+                  <li class="tablink" id="span"><a href="#SectionsInput">Характеристики пролетов</a></li>
+                  <li class="tablink" id="LLI"><a href="#LocalLoadsInput">Сосредоточенные усилия</a></li>
+        </div>
+		
+
+	
+				
+		 <div id="RightPointInput"  class="tabcontent">
+                  <h3>Введите граничные условия на левом конце балки </h3>
+      
+        <form name="form">
+		
+        <p><input id='RightType0' name="RightType" type="radio" value="0"> Свободный конец</p>
+        <p><input id='RightType1' name="RightType" type="radio" value="1"> Свободная опора</p>
+        <p><input id='RightType2' name="RightType" type="radio" value="2"> Жесткая заделка</p>
+    
+        <p><input id="RightF" type="text" name="RightF"> Поперечная сила</p>
+        <p><input id="RightM" type="text" name="RightM"> Изгибающий момент</p>
+        <p><input id="RightW" type="text" name="RightW"> Заданный прогиб</p>
+        <p><input id="RightTet" type="text" name="RightTet"> Заданный угол прогиба</p>
+		
+		<p> <input id="RightPointInputSubmit" style="text-align: center; padding-bottom: 10px;"
+				 type="submit" name="submit" value="Показать на схеме"/>
+			</p>
+     
+	 </form>
+                </div>
+		
+		
+					
+            <div id="LeftPointInput"  class="tabcontent">
+                  <h3>Введите граничные условия на правом конце балки </h3>
+
+    <form name="form">
+	
+        <p><input id='LeftType0' name="LeftType" type="radio" value="0"> Свободный конец</p>
+        <p><input id='LeftType1' name="LeftType" type="radio" value="1"> Свободная опора</p>
+        <p><input id='LeftType2' name="LeftType" type="radio" value="2"> Жесткая заделка</p>
+    
+        <p><input id="LeftF" type="text" > Поперечная сила</p>
+        <p><input id="LeftM" type="text" > Изгибающий момент</p>
+        <p><input id="LeftW" type="text" > Заданный прогиб</p>
+        <p><input id="LeftTet" type="text" > Заданный угол прогиба</p>
+		
+		<p> <input id="LeftPointInputSubmit" style="text-align: center; padding-bottom: 10px;"
+				 type="submit" name="submit" value="Показать на схеме"/>
+			</p>
+        
+	 </form>
+                </div>
+				 
+				  
+		<div id="SupportsInput"  class="tabcontent">
+                  <h3>Введите Введите число промежуточных опор </h3>
+				  
+				  <form name="form">
+  <p>
+   <p><input id="NSupports" type="text" value=0 max="2"> Число промежуточных опор</p> 
+    <br></br>
+	<input align=center type="submit" name="submit" name="SupportInputSubmit" id="SupportInputSubmit" style="text-align: center; height:50px; width: 80px; font-size:36; "
+            value="Задать"/>
+			
+  </p>
+ 
+	 </form>
+			</div>
+			
+	<div id="SupportMomentInput"  class="tabcontent">
+                 <h3>Введите Сосредоточенные моменты на опорах </h3>
+  <form name="form">
+             <div id="momemt_on_support"><p><input id="NSupportsCur" type="text" value=1> Номер промежуточной опоры</p>
+             <p><input id="NMomentOnSupport" type="text" > Момент на промежуточной опоре</p></div>
+       
+             <p>
+			 <input id="SupportMomentrInputSubmitEnd" style="text-align: center; padding-bottom: 10px;"
+				 type="submit" name="submit" value="Показать на схеме"/> 
+				 <!-- TODO - rewrite to push to list all items -->
+			</p> 
+		
+	 </form>	
+			</div>
+				
+				
+	
+		
+		<div id="SectionsInput"  class="tabcontent">
+                <h3>Введите характеристики сечений </h3>
+ <form name="form">
+        <p><input id="NSection" type="text" value='1'> Номер пролета</p>
+         <p><input id="LSection" type="text" > Длина пролета</p>
+         <p><input id="JSection" type="text" > Момент инерции поперечного сечения</p>
+         <p><input id="WSection" type="text" > Момент сопротивления поперечного сечения</p>
+         <p><input id="ESection" type="text" > Модуль нормальной упругости</p>
+         <p><input id="QSection" type="text" > Интенсивность постоянной нагрузки</p>
+         <p><input id="Q1Section" type="text" > Интенсивность линейной нагрузки на правом конце</p>
+		 
+		 <p>
+			 <input id="SupportMomentrInputSubmitCur" style="text-align: center; padding-bottom: 10px;"
+				 type="submit" name="submit" value="Показать на схеме"/> 
+				 
+		</p> 
+
+	 </form>
+		 
+  			</div>	
+			   
+		<div id="LocalLoadsInput"  class="tabcontent">
+     <h3>Введите характеристики сосредоточенных усилий </h3>
+  <form name="form">
+        <p><input id="NPoint" type="text" value='1'> Номер точки приложения усилий</p>
+        <p><input id="RPoint" type="text" > Расстояние от левого конца</p>
+        <p><input id="FPoint" type="text" > Значение поперечной силы</p>
+        <p><input id="MPoint" type="text" > Значение изгибающегомомента </p>
+
+		<br></br>
+         
+        
+        <p> <input id="PFInputNext" style="text-align: center; padding-bottom: 10px;"
+				< type="submit" value="Добавить еще"/>
+			</p>
+			<p> <input id="PFInputAll" style="text-align: center; padding-bottom: 10px;"
+				type="submit" name="submit" value="Показать на схеме"/>
+			</p>
+			
+	
+	 </form>
+			</div>
+			
+
+			
+		
+	<input id="submitall" style="text-align: center; font-size:28px; position:fixed; bottom:10px; left:400px;"
+	name="submit" type="submit" value="Отправить все данные"></input>	
+
+	
+
+<form id="hiddensubmit" name="hiddensubmit">
+<input id="allres" name="allres" hidden> </input>	
+<input id="allressubmit" name="allressubmit" hidden> </input>	
+</form>
+
+<input id="acc" "{{account_amount}}" hidden disabled="disabled"/>	
+<script>
+
+//console.log(document.lastChild.id);
+
+//#
+
+$(document).ready(function() { 
+        $("#SMI").css("display", "none");
+});
+	
+function show_suppmominp()  {
+    var NOpor=Number(document.getElementById('NSupports').value);
+    if(NOpor>0) { 
+     $("#SMI").css("display", "block")};
+
+  for (var i=2; i<NOpor; i++){
+        
+  var momemt_on_support = document.getElementById('momemt_on_support');
+  var momemt_on_support_clone = momemt_on_support.cloneNode(true);
+  momemt_on_support.appendChild(momemt_on_support_clone); 
+  momemt_on_support_clone.setAttribute('id', 'momemt_on_support'+i.toString()); 
+  momemt_on_support_clone.value=i;  //not working TODO
+  var p=document.createElement("p");
+  momemt_on_support.appendChild(p);
+  };
+};
+
+function disableNSupportsInput() {
+document.getElementById('NSupports').disabled = true;
+			};
+			
+$('#SupportInputSubmit').on('click', show_suppmominp);
+$('#SupportInputSubmit').on('click', disableNSupportsInput);
+
+
+function addTabForLocalMoments() {
+var tabs=document.getElementById("tabs");
+alert(tabs.children);
+
+var local_itself=document.getElementById("LocalLoadsInput");
+ var local_clone = local_itself.cloneNode(true);//local_itself.cloneNode(true);
+//tabs.appendChild(local_clone);
+local_itself.after(local_clone);
+//some.parentNode.insertBefore(clone, some.nextSibling);
+local_clone.setAttribute('id', 'local_clone'+count.toString());
+//local_clone.parentNode.insertBefore(clone, some.nextSibling);
+//document.body.appendChild(local_clone);
+
+var li_local = document.createElement("li");
+  li_local.setAttribute("id", "LocalLoadsInput"+count.toString()); 
+  li_local.setAttribute("class", "tablink");
+  var local_a = document.createElement('a');
+  local_a.appendChild(document.createTextNode("Еще сосредоточенные усилия "+count.toString()));
+  local_a.setAttribute('href', "#"+'local_clone'+count.toString());
+  
+  
+	//local_a.href="#"+'LocalLoadsInput'+count.toString());
+	li_local.appendChild(local_a);
+  tabs.appendChild(li_local);
+  
+  //$( "tabs" )( "refresh" );
+
+ }; 
+ let count;
+count=2;
+
+
+$("#PFInputNext").on("click", addTabForLocalMoments);
+$("#PFInputNext").on("click", function(){count++});
+
+
+function addTabForSpans() { 
+  var NOpor=Number(document.getElementById('NSupports').value);
+  if(NOpor>0) {
+
+  for (var span = 2; span <= NOpor+1; span++) {
+  
+  var span_itself = document.getElementById('SectionsInput');
+  var span_clone = span_itself.cloneNode(true);
+  //span_itself.after(span_clone);
+  ////////var script_tag=document.getElementsByTagName("script")[1];
+  ////////script_tag.before(span_clone);
+  span_itself.after(span_clone);
+  span_clone.setAttribute('id', 'span_clone'+span.toString());
+  //alert("ok");
+  
+  var li_span = document.createElement("li");
+  li_span.setAttribute("id", "li_span"+span.toString()); 
+  li_span.setAttribute("class", "tablink");
+  var span_a = document.createElement('a');
+  span_a.appendChild(document.createTextNode("Пролет № "+span.toString()));
+  span_a.setAttribute('href', "#"+'span_clone'+span.toString());
+  li_span.appendChild(span_a);
+  //$("#span").after(li_span);
+  
+ // $('#tabs').appendChild(li_span);
+ var where=document.getElementById('LLI');
+ where.before(li_span);
+
+      };
+    };
+};
+
+
+$('#SupportInputSubmit').on("click", addTabForSpans);
+
+
+
+
+
+
+$( "#NSupports" ).keyup(function() {
+ var account_amount= Number({{account_amount}});               //( $( "#acc" ).val()); //OR parseInt
+
+   if(($( "#NSupports" ).val() >= 3 && account_amount < 100))
+    {
+       $( "#NSupports" ).val("");
+	   //TO DO РАССЧИТАТЬ ДОНАТ В ЗАВИСИМОСТИ ОТ КОЛИЧЕСТВА ОПОР 
+	   var testdonate="СКОЛЬКО_ТО ДЕНЕГ";
+	   alert("Для расчета больше 2 опор сделайте, пожалуйста, небольшой донат проекту в размере = ", testdonate)
+    }
+	
+});
+
+
+
+
+onClick = url => {
+ var all_data=submit_all();
+ //var all_data=[];
+// var elements = document.getElementsByTagName("input");
+//for (var i = 0; i < elements.length; i++) {
+  //  all_data.push([elements[i], elements[i].value]); };
+
+ //alert(all_data);
+localStorage.setItem('all_data', JSON.stringify(all_data)); 
+  window.location.href = url;
+}	
+	
+	
+	
+	
+// $.ajax({
+             //   url: "/view_all_inputs",
+             //   type: "get",
+               //  data: { passed_data: 'test'},
+               //  success: function(){}
+
+
+$("#submitall").on("click", submit_all);
+//var all_data=[];
+
+
+function submit_all() { 
+ 
+ var all_data=[];
+ //debugger;
+ var elements = document.getElementsByTagName("input");
+// var not_needed_elements = document.querySelectorAll("input[id^='ubmit']"); // - нужно это исключить!
+
+ //toRemove=new Set(not_needed_elements);
+ //var difference=elements.filter(x  => !toRemove.has(x));
+for (var i = 0; i < elements.length; i++) {
+    all_data.push([elements[i].id, elements[i].value]); };
+	
+var filtered0=all_data.filter(el => el[1] !== "Показать на схеме");
+var filtered1 = filtered0.filter(el => el[1] !=="Добавить еще");
+var filtered = filtered1.slice(0, -4);
+//alert(filtered);
+ 
+ //alert(all_data)
+ return filtered;
+
+ };
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ //$("#view_all").click(function(){
+ // var href = $(this).attr("href");
+ //var all_data=grandsubmit();
+// alert(all_data);
+ //    SendToPy();
+   
+  //  window.location.href = href;
+//});
+
+
+ //var elements = document.getElementsByTagName("input");
+ //console.log(elements);
+ 
+ //const forms = document.querySelectorAll('form');
+//const form = forms[0];
+
+//Array.from(form.elements).forEach((input) => {
+ // console.log(input);
+//});
+
+
+
+function safe_all_data() { 
+ 
+ var all_data=[];
+ //debugger;
+ var elements = document.getElementsByTagName("input");
+for (var i = 0; i < elements.length; i++) {
+    all_data.push([elements[i], elements[i].value]); };
+ 
+
+var filename = "EasyBeamInptData.txt";
+
+var blob = new Blob([all_data], {
+ type: "text/plain;charset=utf-8"
+});
+
+saveAs(blob, filename);
+}
+
+
+</script>
+</body>
+            </html>
+				  
+	 {% endblock %}			  

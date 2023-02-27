@@ -28,7 +28,7 @@ passw=os.environ.get("passw")
 print(passw)
 
 
-app = Flask(__name__, static_url_path="", static_folder="./static")
+app = Flask(__name__, static_folder="./static")
 app.config['SECRET_KEY'] = os.environ.get("flask_secret")
 
 #UPLOAD_FOLDER=r'C:\Users\Sasha\Desktop\M\receipts'

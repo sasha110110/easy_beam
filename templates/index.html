@@ -170,7 +170,6 @@
 
 //console.log(document.lastChild.id);
 
-//#
 
 $(document).ready(function() { 
         $("#SMI").css("display", "none");
@@ -275,13 +274,6 @@ function addTabForSpans() {
 };
 
 
-$('#SupportInputSubmit').on("click", addTabForSpans);
-
-
-
-$('#SupportInputSubmit').on('click', disableNSupportsInput);
-$('#SupportInputSubmit').on('click', disableNSupportsInputSubmit);
-
 
 $( "#NSupports" ).keyup(function() {
  var account_amount= Number({{account_amount}});               //( $( "#acc" ).val()); //OR parseInt
@@ -296,7 +288,12 @@ $( "#NSupports" ).keyup(function() {
 	
 });
 
+$('#SupportInputSubmit').on("click", addTabForSpans);
 
+
+
+$('#SupportInputSubmit').on('click', disableNSupportsInput);
+$('#SupportInputSubmit').on('click', disableNSupportsInputSubmit);
 
 
 onClick = url => {
@@ -399,4 +396,4 @@ saveAs(blob, filename);
 </body>
             </html>
 				  
-	 {% endblock %}			  	  
+	 {% endblock %}			  

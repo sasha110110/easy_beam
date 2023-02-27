@@ -1,0 +1,32 @@
+{% extends "base1.html" %}
+{% block title %}  {% endblock %}
+ 
+{% block body %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 		<script>src="https://code.jquery.com/jquery-3.6.3.js"</script>
+		<scripttype="text/javascript" src="/jquery/jquery-3.6.0.min.js"></script> --> 
+	<br></br>
+	<div align="center">	
+	
+{% if email %}
+		<h2>{{email|safe}}<h2>
+{% endif %}
+
+		<p>Если другой email, пожалуйста, укажите</p>
+		<p><form id="mailsubmit" action="" method="POST"><p>
+		 {{ form.hidden_tag() }}
+        <p>
+         
+            {{ form.email(placeholder="Введите, пожалуйста, почту", size=45)}}
+			<input type="submit" id="emailsubmit" value="OK"/> 
+        </p>
+		
+		<h2>Состояние счета</h2>
+{% if account_amount %}
+		<h2>{{account_amount|safe}}<h2>
+{% endif %}
+		
+		
+		</div>
+		
+	 {% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base1.html" %}
+{% block title %}  {% endblock %}
+ 
+{% block body %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 		<script>src="https://code.jquery.com/jquery-3.6.3.js"</script>
+		<scripttype="text/javascript" src="/jquery/jquery-3.6.0.min.js"></script> --> 
+	
+<div align="center" style="position:absolute; top:150px left:200px" >		
+<br></br>
+
+
+
+
+
+		<h3  align=center"> Задонатить </h3>
+
+<h3 align=center"> -для расширения возможностей </h3>
+<h3 align=center"> - как благодарность за работу </h3>
+		<br></br>
+
+
+ <div>	<form id="emailform" name="emailform" method="POST" action="/check_payment">   </div>
+<div>	<input id="emailinput" name="emailinput" placeholder="Введите, пожалуйста, почту", size="46"/></div>
+<div><input type="submit" id="emailsubmit" name="emailsubmit" value="Задать" hidden> </input> </div></form> 
+
+
+
+
+	<div>	<button type="button" class="btn btn-success navbar-btn" id="one">Для 3 опор</button> </div>
+	<br></br>
+	<div>	<button type="button" class="btn btn-success navbar-btn" id="two"> Для 4 опор</button> </div>
+	<br></br>
+	<div>	<button type="button" class="btn btn-success navbar-btn" id="three" >Для 5 опор</button> </div>
+	<br></br>
+	<div>	<input type="text" id="more" placeholder="Ввести свое число"> </input>
+	<input type="submit" class="btn btn-success navbar-btn" value="Задать" onclick="setfunc"> </input> </div>
+		<br></br>
+		
+		
+	<form style="position:fixed; left:600px; top:200px;" id="yooform" name="yooform" 
+	method="POST" action="https://yoomoney.ru/quickpay/confirm.xml" target="_blank">
+    <input type="hidden" name="receiver" value="4100118120472366"/>
+    <input type="hidden" name="label" value="{{operational_id}}"/>
+    <input type="hidden" name="quickpay-form" value="button"/>
+	<h2>Сумма</h2>
+    <input name="sum" id="sum" value="" data-type="number"/>
+   <p> <label><input type="radio" name="paymentType" value="PC"/>ЮMoney</label> </p>
+  <p>  <label><input type="radio" name="paymentType" value="AC"/>Банковской картой</label> </p>
+   <p>   <input type="submit" id="banksubmit" name="banksubmit" style="visibility:hidden;"/></p> </form>
+   
+ <p>   <input style="position:fixed; left:638px; top:375px;" 
+ type="submit" id="submittwo" name="submittwo" value="Перевести !" onclick="submittwo()"/></p>
+	
+	
+	
+		
+	<script type="text/javascript">
+$( "#one" ).click(function() {
+  $( "#sum" ).val("100");
+});
+
+$( "#two" ).click(function() {
+  $( "#sum" ).val("200");
+});
+
+$( "#three" ).click(function() {
+  $( "#sum" ).val("300");
+});
+
+function setfunc() {
+var supp = document.getElementById("more").value;
+
+console.log(supp);
+var supp_res = (Number(supp)*100).toString();
+  $( "#sum" ).val(supp_res);
+};
+
+
+
+
+
+submittwo = function(){
+    //document.getElementById("mailform").submit();
+	 $( "#emailsubmit" ).click();
+     $( "#banksubmit" ).click();
+}
+</script>	
+		
+		
+		
+		
+ {% endblock %}

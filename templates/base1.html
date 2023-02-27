@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+        <html lang="en">
+            <head>
+        <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+	
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/tabstyle.css') }}">
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/tabstyle.css">
+		
+		<link rel="stylesheet" type="text/css" media="all" href="../static/css/styles.css">
+       
+ 
+    
+    <title>{% block title %} {% endblock %}</title>
+	
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <!-- CSS Bootstrap CDN Link -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+ 
+
+ 
+</head>
+	
+<body>
+ <!-- <style> body {background-attachment:fixed /*edit*/; background-image: linear-gradient(#3E3F45, #BABCC6); -->
+<style>  
+body {background-attachment:fixed /*edit*/; background-image: url('/static/images/beam.PNG');
+</style>
+{% block body %}
+{% endblock %}
+ 
+ 
+ 
+ 
+ 
+ 
+ <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{url_for('index')}}">EasyBeam Расчеты для балок с опорами</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('prepare_to_pay')}}">Задонатить! <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('index')}}">Отправить на расчет <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="view_all" href="#" onClick="onClick('/view_all_inputs')">Показать все данные <span class="sr-only">(current)</span></a>
+      </li>
+	  
+	   <span class="navbar-text">
+    Почта  
+  </span>
+ 
+ <span type=input id="emailval" name="emailval">
+   {% if email %}
+		{{email|safe}}
+{% endif %}
+  </span>
+ 
+<span class="navbar-text">
+    Счет 
+  </span>
+  <span class="navbar-text" id="accountval" name="accountval">
+    {% if account_amount %}
+		{{account_amount|safe}}
+{% endif %}
+  </span>
+    </ul>
+  </div>
+</nav>
+
+  </body>
+  </html>

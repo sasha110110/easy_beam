@@ -332,8 +332,8 @@ for (var i = 0; i < elements.length; i++) {
     all_data.push([elements[i].id, elements[i].value]); };
 	
 var filtered0=all_data.filter(el => el[1] !== "Показать на схеме");
-var filtered1 = filtered0.filter(el => el[1] !=="Добавить еще");
-var filtered = filtered1.slice(0, -4);
+var filtered = filtered0.filter(el => el[1] !=="Добавить еще");
+//var filtered = filtered1.slice(0, -4);
 //alert(filtered);
  
  //alert(all_data)

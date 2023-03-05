@@ -110,14 +110,17 @@ def prepare_to_pay():
                 
     return render_template("temp.html", operational_id=operational_id)
 
-@app.route('/check_payment_webhook' , methods = ['GET', 'POST'])  
+@app.route('/check_payment_webhook' , methods = ['POST'])  
 def check_payment_webhook():
     payment_info=None
     if request.method=="POST":
         payment_info=request.get_json()
         flash(payment_info)
+        session["payment_inf0"]=str(payment_info)
+        message=json.dumps(payment_info)
+        
     print(payment_info)
-    return render_template("check_payment_webhook.html", payment_info=payment_info)
+    return redirect(url_for("check_payment", payment_info=payment_info)
 
 
 
@@ -136,6 +139,8 @@ def check_payment():
             session["email"]=email
          
         got_operation_id, amount=check_email()
+        if "payment_info" in session.keys():
+            print("GOT", str(payment_info))
         print("GOT", got_operation_id, amount)
         #TO DO operation id, email check with given email
         if session["operation_id"]==got_operation_id:

@@ -140,6 +140,7 @@ def check_payment():
          
         got_operation_id, amount=check_email()
         if "payment_info" in session.keys():
+            flash(payment_info)
             print("GOT", str(payment_info))
         print("GOT", got_operation_id, amount)
         #TO DO operation id, email check with given email

@@ -110,7 +110,8 @@ def prepare_to_pay():
                 
     return render_template("temp.html", operational_id=operational_id)
 
-@app.route('/check_payment_webhook' , methods = ['POST'])  
+@app.route('/check_payment_webhook' , methods = ['POST'])
+
 def check_payment_webhook():
     payment_info=None
     if request.method=="POST":
@@ -120,11 +121,11 @@ def check_payment_webhook():
         message=json.dumps(payment_info)
         
     print(payment_info)
-    return redirect(url_for("check_payment", payment_info=payment_info)
+    return redirect(url_for("check_payment", payment_info=payment_info))
 
 
 
-@app.route('/check_payment' , methods = ['GET', 'POST'])  
+@app.route('/check_payment', methods = ['GET', 'POST'])  
 def check_payment():
     #account_amount=0
     session["account_amount"]=0
@@ -138,17 +139,17 @@ def check_payment():
 
             session["email"]=email
          
-        got_operation_id, amount=check_email()
-        if "payment_info" in session.keys():
-            flash(payment_info)
-            print("GOT", str(payment_info))
+    got_operation_id, amount=check_email()
+    if "payment_info" in session.keys():
+        flash(payment_info)
+        print("GOT", str(payment_info))
         print("GOT", got_operation_id, amount)
         #TO DO operation id, email check with given email
-        if session["operation_id"]==got_operation_id:
-            session["account_amount"]+=amount
+    if session["operation_id"]==got_operation_id:
+        session["account_amount"]+=amount
             
                 
-            print(session["account_amount"])
+        print(session["account_amount"])
         
 
     return render_template("payment_processing.html", email=email,
@@ -223,6 +224,7 @@ def thank():
           #return f.read()
 
       
+
 
 #if __name__ == '__main__':
    # app.run('0.0.0.0', 5000,  debug = True) #ssl_context='adhoc')

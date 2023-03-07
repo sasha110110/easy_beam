@@ -109,11 +109,11 @@ def prepare_to_pay():
 @app.route('/webhook' , methods = ['POST'])
 def check_payment_webhook():
     payment_info=request.json #get_json()
-        if payment_info:
-            flash(payment_info)
-            session["payment_info"]=str(payment_info)
+    if payment_info:
+        flash(payment_info)
+        session["payment_info"]=str(payment_info)
             #message=json.dumps(payment_info)
-            return redirect(url_for(webhook2))
+        return redirect(url_for(webhook2))
     
         
 

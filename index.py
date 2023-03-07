@@ -113,7 +113,7 @@ def prepare_to_pay():
 
 @app.route('/check_payment_webhook' , methods = ['POST', 'GET'])
 def check_payment_webhook():
-    payment_info=None
+    #payment_info=None
     if request.method=="POST":
         payment_info=request.json #get_json()
         flash(payment_info)

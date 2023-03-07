@@ -114,9 +114,9 @@ def check_payment_webhook():
         if payment_info:
             flash(payment_info)
             session["payment_info"]=str(payment_info)
-            message=json.dumps(payment_info)
-        return str(payment_info)
-    return str(payment_info)
+            #message=json.dumps(payment_info)
+            return str(payment_info)
+    
         
     #print(payment_info)
     #return str(payment_info)

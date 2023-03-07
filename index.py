@@ -106,31 +106,22 @@ def prepare_to_pay():
     return render_template("temp.html", operational_id=operational_id)
 
 
-@app.route('/webhook' , methods = ['GET','POST'])
+@app.route('/webhook' , methods = ['POST'])
 def check_payment_webhook():
-    payment_info=None
-    if request.method=="POST":
-        payment_info=request.data #get_json()
+    payment_info=request.json #get_json()
         if payment_info:
             flash(payment_info)
             session["payment_info"]=str(payment_info)
             #message=json.dumps(payment_info)
-            return str(payment_info)
+            return redirect(url_for(webhook2))
     
         
-    #print(payment_info)
-    return str(payment_info)
-    #return redirect(url_for("check_payment", payment_info=payment_info))
 
 @app.route('/webhook2' , methods = ['POST', 'GET'])
-def check_payment_simple():
-    payment_info=None
-    if request.method=="POST":
-        payment_info=request.json #get_json()
-        flash(payment_info)
-        session["payment_info"]=str(payment_info)
-        message=json.dumps(payment_info)
-        return str(payment_info)
+def webhook2():
+    payment_info=session.get("payment_info", None)
+       
+    return payment_info
         
  
    

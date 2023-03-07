@@ -97,12 +97,7 @@ def prepare_to_pay():
     operational_id=441361714955017004#randint(100, 678899)
     print(operational_id)
     session["operation_id"]=operational_id
-    
-    
-    
-
-
-        
+          
     if request.method=="POST":
         #operational_id=randint(100, 678899)
         #print("OPERATIONAL OS", operational_id)
@@ -117,8 +112,9 @@ def check_payment_webhook():
     if request.method=="POST":
         payment_info=request.json #get_json()
         flash(payment_info)
-        session["payment_inf0"]=str(payment_info)
+        session["payment_info"]=str(payment_info)
         message=json.dumps(payment_info)
+        return str(payment_info)
         
     print(payment_info)
     return str(payment_info)
@@ -130,8 +126,9 @@ def check_payment_simple():
     if request.method=="POST":
         payment_info=request.json #get_json()
         flash(payment_info)
-        session["payment_inf0"]=str(payment_info)
+        session["payment_info"]=str(payment_info)
         message=json.dumps(payment_info)
+        return str(payment_info)
         
     print(payment_info)
     return str(payment_info)

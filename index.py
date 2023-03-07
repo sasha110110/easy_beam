@@ -113,7 +113,7 @@ def check_payment_webhook():
         flash(payment_info)
         session["payment_info"]=str(payment_info)
             #message=json.dumps(payment_info)
-        return redirect(url_for(webhook2))
+        return "OK"
     
         
 

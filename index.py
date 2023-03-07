@@ -120,8 +120,9 @@ def check_payment_webhook():
 @app.route('/webhook2' , methods = ['POST', 'GET'])
 def webhook2():
     payment_info=session.get("payment_info", None)
-       
+         
     return payment_info
+
         
  
    

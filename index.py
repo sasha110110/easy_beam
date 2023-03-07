@@ -119,7 +119,7 @@ def check_payment_webhook():
     
         
     #print(payment_info)
-    #return str(payment_info)
+    return str(payment_info)
     #return redirect(url_for("check_payment", payment_info=payment_info))
 
 @app.route('/webhook2' , methods = ['POST', 'GET'])

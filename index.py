@@ -110,6 +110,8 @@ def prepare_to_pay():
                 
     return render_template("temp.html", operational_id=operational_id)
 
+
+@app.route('/check_payment_webhook' , methods = ['POST', 'GET'])
 def check_payment_webhook():
     payment_info=None
     if request.method=="POST":

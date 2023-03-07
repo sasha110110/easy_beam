@@ -112,7 +112,7 @@ def check_payment_webhook():
     if payment_info:
         session["payment_info"]=str(payment_info)
             #message=json.dumps(payment_info)
-        return "OK"
+        return 200
     
         
 

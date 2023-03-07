@@ -106,7 +106,7 @@ def prepare_to_pay():
     return render_template("temp.html", operational_id=operational_id)
 
 
-@app.route('/webhook' , methods = ['POST'])
+@app.route('/webhook' , methods = ['GET','POST'])
 def check_payment_webhook():
     payment_info=None
     if request.method=="POST":
@@ -116,6 +116,7 @@ def check_payment_webhook():
             session["payment_info"]=str(payment_info)
             message=json.dumps(payment_info)
         return str(payment_info)
+    return str(payment_info)
         
     #print(payment_info)
     #return str(payment_info)

@@ -110,7 +110,7 @@ def prepare_to_pay():
 def check_payment_webhook():
     payment_info=None
     if request.method=="POST":
-        payment_info=request.json #get_json()
+        payment_info=request.data #get_json()
         if payment_info:
             flash(payment_info)
             session["payment_info"]=str(payment_info)
@@ -122,7 +122,7 @@ def check_payment_webhook():
     #return str(payment_info)
     #return redirect(url_for("check_payment", payment_info=payment_info))
 
-@app.route('/check_payment_simple' , methods = ['POST', 'GET'])
+@app.route('/webhook2' , methods = ['POST', 'GET'])
 def check_payment_simple():
     payment_info=None
     if request.method=="POST":
@@ -132,8 +132,7 @@ def check_payment_simple():
         message=json.dumps(payment_info)
         return str(payment_info)
         
-    print(payment_info)
-    return str(payment_info)
+ 
    
 
 

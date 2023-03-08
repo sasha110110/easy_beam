@@ -14,7 +14,11 @@
 		
 		<h3>Состояние счета</h3>
 		<h2>{{account_amount|safe}}<h2>
-		
+			
+		{% if payment_info %}
+		<h3>{{payment_info|safe}}<h3>
+		{% endif %}
+    
 		
 		</div>
 		

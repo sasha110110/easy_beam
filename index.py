@@ -131,6 +131,7 @@ def webhook2():
 def check_payment():
     #account_amount=0
     session["account_amount"]=0
+    payment_info=""
     if request.method=="POST":
         if "emailsubmit" in request.form:
             flash("Почта для этой сессии успешно сохранена ")
@@ -143,7 +144,7 @@ def check_payment():
          
     got_operation_id, amount=check_email() ###########################################    email check
     if "payment_info" in session.keys():
-        flash(payment_info)
+        payment_info=session["payment_info"]
         print("GOT", str(payment_info))
         print("GOT", got_operation_id, amount)
         #TO DO operation id, email check with given email
@@ -155,7 +156,7 @@ def check_payment():
         
 
     return render_template("payment_processing.html", email=email,
-                           account_amount=session["account_amount"])
+                           account_amount=session["account_amount"], payment_info=payment_info)
     
 
 

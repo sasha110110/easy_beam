@@ -145,7 +145,6 @@ def check_payment():
     got_operation_id, amount=check_email() ###########################################    email check
     #if "payment_info" in session.keys():
         #payment_info=session["payment_info"]
-        print("GOT", str(payment_info))
         print("GOT", got_operation_id, amount)
         #TO DO operation id, email check with given email
     if session["operation_id"]==got_operation_id:

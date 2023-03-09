@@ -60,6 +60,7 @@ global data
 
 @app.route('/')
 def index():
+    session["operation_id"]=""
 
     email=None
     account_amount=0
@@ -94,16 +95,16 @@ def prepare_to_pay():
     
     #TO DO - CHECK SESSION
     #operational_id=None
-    operational_id=441361714955017004#randint(100, 678899)
-    print(operational_id)
-    session["operation_id"]=operational_id
+    operation_id=441361714955017004#randint(100, 678899)
+    print(operation_id)
+    session["operation_id"]=operation_id
           
     if request.method=="POST":
         #operational_id=randint(100, 678899)
         #print("OPERATIONAL OS", operational_id)
         return redirect(url_for("check_payment"))    
                 
-    return render_template("temp.html", operational_id=operational_id)
+    return render_template("temp.html", operational_id=operation_id)
 
 
 @app.route('/webhook' , methods = ['POST'])
@@ -120,7 +121,7 @@ def check_payment_webhook():
 def webhook2():
     payment_info=session.get("payment_info", None)
          
-    return payment_info
+    return render_template("webhook2.html", payment_info=payment_info)
 
         
  
@@ -129,8 +130,10 @@ def webhook2():
 
 @app.route('/check_payment', methods = ['GET', 'POST'])  
 def check_payment():
+    print(session.keys())
     account_amount=0
     session["account_amount"]=0
+    email=""
    
     if request.method=="POST":
         if "emailsubmit" in request.form:
@@ -226,6 +229,7 @@ def thank():
           #return f.read()
 
       
+
 
 
 #if __name__ == '__main__':

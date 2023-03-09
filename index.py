@@ -110,7 +110,7 @@ def prepare_to_pay():
 
 @app.route('/webhook' , methods = ['POST'])
 def check_payment_webhook():
-    payment_info=request.get_data() #data
+    payment_info=request.form.data #data
     
     if payment_info:
         session["payment_info"]=str(payment_info)
@@ -121,15 +121,12 @@ def check_payment_webhook():
 
 @app.route('/webhook2')
 def webhook2():
-
-    payment_info=session.get("payment_info", "")
+    info=request.form.data
+    payment_info=json.dumps(info)
+    #payment_info=session.get("payment_info", "")
     
+  
     
-    #flash("payment_info")
-    #payment_info = json.loads(request.data, strict=False) # strict = False allow for escaped char
-    #payment_info=session.get("payment_info", None)
-    #if method==POST 
-    #json.dumps
     return render_template("webhook2.html", payment_info=payment_info)
 
         

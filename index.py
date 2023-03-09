@@ -122,7 +122,8 @@ def check_payment_webhook():
 def webhook2():
 
     #payment_info=session.get("payment_info", None)
-    payment_info=request.args ##NEXT - request.data 
+    payment_info=request.json ##NEXT - request.data 
+    session["payment_info"]=str(payment_info)
     
     #flash("payment_info")
     #payment_info = json.loads(request.data, strict=False) # strict = False allow for escaped char

@@ -119,8 +119,8 @@ def check_payment_webhook():
 
 @app.route('/webhook2')
 def webhook2():
-    #payment_info=session.get("payment_info", None)
-    #payment_info=request.get_json()
+    payment_info=session.get("payment_info", None)
+    payment_info=request.get_json()
     #flash("payment_info")
     payment_info = json.loads(request.data, strict=False) # strict = False allow for escaped char
     

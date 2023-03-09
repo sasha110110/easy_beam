@@ -18,6 +18,7 @@ from itsdangerous import URLSafeTimedSerializer
 from flask_mail import Message, Mail
 from time import time
 import jwt
+import json
 from sqlalchemy.exc import IntegrityError
 from itsdangerous import BadSignature, SignatureExpired
 from flask import g, request
@@ -121,10 +122,13 @@ def check_payment_webhook():
 def webhook2():
 
     #payment_info=session.get("payment_info", None)
-    payment_info=request.json
+    payment_info=request.args ##NEXT - request.data 
+    
     #flash("payment_info")
     #payment_info = json.loads(request.data, strict=False) # strict = False allow for escaped char
     #payment_info=session.get("payment_info", None)
+    #if method==POST 
+    #json.dumps
     return render_template("webhook2.html", payment_info=payment_info)
 
         

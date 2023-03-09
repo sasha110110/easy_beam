@@ -117,13 +117,14 @@ def check_payment_webhook():
     
         
 
-@app.route('/webhook2')
+@app.route('/webhook2', methods=['GET', 'POST'])
 def webhook2():
-    payment_info=session.get("payment_info", None)
-    payment_info=request.get_json()
+    if request.method=="POST":
+    #payment_info=session.get("payment_info", None)
+        payment_info=request.json
     #flash("payment_info")
-    payment_info = json.loads(request.data, strict=False) # strict = False allow for escaped char
-    
+    #payment_info = json.loads(request.data, strict=False) # strict = False allow for escaped char
+    #payment_info=session.get("payment_info", None)
     return render_template("webhook2.html", payment_info=payment_info)
 
         

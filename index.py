@@ -122,9 +122,9 @@ def check_payment_webhook():
 
 @app.route('/webhook2')
 def webhook2():
-    #info=request.form.data
+    info=request.form.data
     #payment_info=json.dumps(info)
-    payment_info=session.get("payment_info", "")
+    payment_info=str(info) #session.get("payment_info", "")
     
   
     

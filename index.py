@@ -129,7 +129,7 @@ def webhook2():
 
 @app.route('/check_payment', methods = ['GET', 'POST'])  
 def check_payment():
-    #account_amount=0
+    account_amount=0
     session["account_amount"]=0
    
     if request.method=="POST":

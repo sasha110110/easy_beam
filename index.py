@@ -110,7 +110,7 @@ def prepare_to_pay():
 
 @app.route('/webhook' , methods = ['POST', 'GET'])
 def check_payment_webhook():
-    payment_info=request.form.keys()[0]#data
+    payment_info=request.form.keys()
     #form = json.loads(next(iter(request.form.keys())))
     print(payment_info)
     

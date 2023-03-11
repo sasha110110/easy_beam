@@ -110,15 +110,16 @@ def prepare_to_pay():
 
 @app.route('/webhook' , methods = ['POST', 'GET'])
 def check_payment_webhook():
-    if request.form.validate_on_submit(): #if request.form.validate_on_submit():
-        payment_info=request.form.keys()
-    #form = json.loads(next(iter(request.form.keys())))
-        print(payment_info)
-    
-        if payment_info:
-            session["payment_info"]=str(payment_info)
-            #message=json.dumps(payment_info)
-    return str(payment_info)
+ 
+    if request.method == 'POST':
+        
+        data = b64decode(request.data)
+        
+        if not data:
+            data = b64decode(request.form.keys()[0])
+        special_mimetype = request.mimetype
+        return(special_mimetype + '\n' + data)
+    return str(data)
     
         
 

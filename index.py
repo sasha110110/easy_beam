@@ -110,23 +110,23 @@ def prepare_to_pay():
 
 @app.route('/webhook' , methods = ['POST', 'GET'])
 def check_payment_webhook():
-    if request.method=='POST': #if request.form.validate_on_submit():
-        payment_info=request.form.data #request.form.keys()
+    if request.form.validate_on_submit(): #if request.form.validate_on_submit():
+        payment_info=request.form.keys()
     #form = json.loads(next(iter(request.form.keys())))
         print(payment_info)
     
         if payment_info:
             session["payment_info"]=str(payment_info)
             #message=json.dumps(payment_info)
-    return str(request.form.data)
+    return str(payment_info)
     
         
 
 @app.route('/webhook2')
 def webhook2():
-    #info=request.form.data
-    #payment_info=json.dumps(info)
-    payment_info=session.get("payment_info", "")
+    info=list(request.form.keys())
+    payment_info=json.dumps(info)
+    #payment_info=session.get("payment_info", "")
     
   
     

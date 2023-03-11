@@ -116,7 +116,7 @@ def check_payment_webhook():
         data = b64decode(request.data)
         
         if not data:
-            data = b64decode(request.form.keys()[0])
+            data = b64decode(list(request.form.keys())[0])
         special_mimetype = request.mimetype
         return(special_mimetype + '\n' + data)
     return str(data)
